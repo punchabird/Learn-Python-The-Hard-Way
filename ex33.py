@@ -1,19 +1,23 @@
 #learning about while-loops 
-i = 0 
+
+i = int(input("Enter a number.> "))
+range_increase = int(input("Enter another number. >"))
 numbers = []
 
-while i < 6:
-	print(f"At the top i is {i}")
-	numbers.append(i)
+def number_crunch(i, range_increase):
+	while i < 6:
+		print(f"At the top i is {i}")
+		numbers.append(i)
 
-	i = i + 1
+		i = i + range_increase
 
-	print("Numbers now: ", numbers)
-	print(f"At the bottom i is {i}")
+		print("Numbers now: ", numbers)
+		print(f"At the bottom i is {i}")
 
-print("The numbers: ")
+	print("The numbers: ")
+
+number_crunch(i, range_increase)
 
 for num in numbers: 
 	print(num)
 
-	
