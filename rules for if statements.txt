@@ -1,0 +1,15 @@
+rules for if statements 
+1. every if-statement must have an else
+2. If this else should never run because it doesn't make sense, use a die function that prints an error message
+3. Never nest if-statements more than two deep, always try to do them one deep 
+4. Treat if-statements like paragraphs, where each if-elif-else group is like a set of sentences
+5. Boolean tests should be simple. If complex, move their calculations to variables earlier in the function and use a good name 
+
+rules for loops
+1. use a while-loop only to loop forever, which is rare - at least in Python
+2. use a for-loop for all other kinds of looping, especially if thre is a fixed or limited number of things to loop over 
+
+tips for debugging
+1. Don't use a debugger 
+2. use print to debug - print out variable values at points in the program to see where they go wrong 
+3. code and test together - make sure parts of your file work as you're working on them. Code, fix, code, fix. 
