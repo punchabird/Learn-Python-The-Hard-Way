@@ -39,9 +39,22 @@ class Death(Scene):
 
 	print("You died!")
 
+class 	
+
 class Kitchen(Scene): 
 
-	print(dedent(""" """))
+	print(dedent("""It's a pretty small kitchen you've stumbled
+	into. Next to a short countertop with a sink and faucet is 
+	an old electric range with oven, as well as a small fridge
+	with a few notes stuck on. Off to the left is the dining
+	table, on top of which sits the remnants of an evening
+	meal, and a small black book. """))
+
+	search = input("> ")
+	
+
+	if search == "fridge": 
+
 
 class SecurityDoor(Scene): 
 
