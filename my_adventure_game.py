@@ -55,6 +55,17 @@ class Kitchen(Scene):
 
 	if search == "fridge": 
 
+		print(dedent("""You sift through the notes on the fridge.
+			It looks like there isn't anything of significance - 
+			grocery lists, passive-aggressive reminders, phone 
+			numbers....and a note that simply says 'Coke 2821'."""))
+		CodeFound == True 
+		return 'HouseKitchen'
+
+	elif search == "book": 
+
+		print(dedent(""""""))
+
 
 class SecurityDoor(Scene): 
 
@@ -74,10 +85,15 @@ class SecurityDoor(Scene):
 		It's a door! Now that a path is open, you run through to see
 		what's inside."""))
 
-		return 'portal_room'
-	else: 
+		return 'PortalRoom'
+	elif code !== "2821": 
 		print(dedent(f"""You press {code} on the vending machine, 
 			but nothing seems to have happened. Maybe try another?""")
+
+	else: print(dedent("""Not quite sure what you meant there.
+		Try something else!"""))
+
+
 
 
 
