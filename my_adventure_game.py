@@ -48,23 +48,95 @@ class Kitchen(Scene):
 	an old electric range with oven, as well as a small fridge
 	with a few notes stuck on. Off to the left is the dining
 	table, on top of which sits the remnants of an evening
-	meal, and a small black book. """))
+	meal, and a small black book. Looks like there's also a door 
+	that leads downstairs, just to the right."""))
 
-	search = input("> ")
+	CodeFound = False
+
+	KitchenSearch = input("> ")
 	
 
-	if search == "fridge": 
+	if KitchenSearch == "fridge": 
 
 		print(dedent("""You sift through the notes on the fridge.
 			It looks like there isn't anything of significance - 
 			grocery lists, passive-aggressive reminders, phone 
 			numbers....and a note that simply says 'Coke 2821'."""))
-		CodeFound == True 
+		CodeFound = True 
 		return 'HouseKitchen'
 
-	elif search == "book": 
+	elif KitchenSearch == "book": 
 
-		print(dedent(""""""))
+		print(dedent("""You flip open the black book on the table.
+			It appears to be a journal of some sort. Written in black
+			ink on cream-colored paper, someone has written the words: 
+
+			UNIVERSE PORTAL 
+
+			all journals to activate
+
+			it is """))
+		return 'HouseKitchen'
+
+	elif KitchenSearch == "sink":
+
+		print(dedent("""Nothing to see here. Just an old sink."""))
+
+	elif KitchenSearch == "range": 
+
+		print(dedent("""Old stovetop. Used recently and still in 
+			good shape."""))
+
+	elif KitchenSearch == "door":
+
+		print(dedent("""Looks like this door leads down into
+			the basement. Time to see what's down there!"""))
+		return 'HouseBasement'
+
+	else: 
+
+		print(dedent("""Not quite sure what that means."""))
+
+
+class Basement(Scene): 
+
+	print(dedent("""The basement downstairs is surprisingly bare.
+		A ratty green sofa occupies the center of the room facing
+		directly opposite a television. Off to the left is a vending
+		machine."""))
+
+	BasementSearch = input("> ")
+
+	if BasementSearch == "vending machine": 
+
+		print(dedent("""You decide to check out the vending machine."""))
+		return 'SecurityDoor'
+
+	elif BasementSearch == "couch":
+
+		print(dedent("""Nothing to see except an old green couch -
+			but wait! Jammed in between the cushions you see another
+			black book. Flipping past the first few pages, you find
+			more scribbles. Among them is a single word circled in 
+			bold red ink: 
+
+			Wednesday"""))
+		return 'HouseBasement'
+
+	elif BasementSearch == "television": 
+
+		print(dedent("""You try pressing the power button for the
+			television, but nothing comes on."""))
+		return	'HouseBasement'
+
+	else: 
+
+		print(dedent("""Not quite sure what that means. 
+			Try something else."""))
+		return 'HouseBasement'
+
+
+
 
 
 class SecurityDoor(Scene): 
@@ -79,6 +151,7 @@ class SecurityDoor(Scene):
 	code = input("> ")
 
 	if code == "2821": 
+
 		print(dedent("""You type in the code '2821', and cross
 		your fingers. The vending machine lets out a loud hissing 
 		noise, then slowly swings open to reveal a hidden passageway.
@@ -86,12 +159,19 @@ class SecurityDoor(Scene):
 		what's inside."""))
 
 		return 'PortalRoom'
+
 	elif code !== "2821": 
+
 		print(dedent(f"""You press {code} on the vending machine, 
 			but nothing seems to have happened. Maybe try another?""")
 
-	else: print(dedent("""Not quite sure what you meant there.
+	else: 
+
+		print(dedent("""Not quite sure what you meant there.
 		Try something else!"""))
+
+
+
 
 
 
