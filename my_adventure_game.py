@@ -1,6 +1,8 @@
+from textwrap import dedent
 from sys import exit
 import os 
 os.system("my_adventure_game_pt2.py")
+
 
 class Engine(object): 
 
@@ -26,18 +28,15 @@ class Map(object):
 	}
 
 	def __init__(self, start_scene):
-		pass
+		self.start_scene = start_scene
 
 	def next_scene(self, scene_name): 
-		pass
+		val = Map.scenes.get(scene_name)
+		return val
 
 	def opening_scene(self): 
-		pass 
+		return self.next_scene(self.start_scene)
 
-
-class Death(Scene): 
-
-	print("You died!")
 
 class 	
 
@@ -120,7 +119,7 @@ class Basement(Scene):
 			more scribbles. Among them is a single word circled in 
 			bold red ink: 
 
-			Wednesday"""))
+			Wednesday my dudes"""))
 		return 'HouseBasement'
 
 	elif BasementSearch == "television": 
@@ -137,7 +136,50 @@ class Basement(Scene):
 
 
 
+class PortalRoom(Scene): 
 
+	print(dedent("""The vending machine turned secret door 
+		swung wide to reveal a hidden passageway. At the end 
+		of the tunnel is a room with a large ring in the
+		center, large enough to fit a house through.
+
+		Just a few feet in front of the portal is a console
+		with a computer screen and keyboard. You turn it on
+		and the following words come up: 
+
+		UNIVERSE PORTAL ACTIVATION PROTOCOL 
+
+		ENTER PASSPHRASE IN TERMINAL"""))
+
+	passphrase = input("> ")
+	FailedAttempts = 0
+
+	if passphrase == "It is Wednesday my dude": 
+
+		print(dedent("""Holy shit! It looks like that was 
+			the correct passphrase. The portal lights up and 
+			starts humming loudly. A bright green vortex begins
+			spinning in the center of the ring..."""))
+		return 'PortalEnd'
+
+	elif FailedAttempts > 3: 
+
+		print(dedent("""Looks like you might have tried the
+			code too many times. The console makes a loud 
+			beeping noise, then you're engulfed in a flash 
+			of light and a large bang..."""))
+		return 'Death'
+
+	else: 
+
+		print(dedent("""That doesn't appear to be the right
+			passphrase. Maybe try another?"""))
+		FailedAttempts += 1
+		return 'PortalRoom'
+
+class PortalEnd(Scene): 
+
+	
 
 class SecurityDoor(Scene): 
 
