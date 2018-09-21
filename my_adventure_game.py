@@ -29,20 +29,20 @@ class Death(Scene):
 
 	def enter(self): 
 		print("You died!")
-	exit(1)
+	#exit(1)
 
 
 
-class GameStart(scene): 
+class GameStart(Scene): 
 
 	def enter(self): 
 		print(dedent("""Someone told you that there's a portal to 
-		an alternate dimension in this abandoned house at the 
-		end of the road in your neighborhood. Not sure what to 
-		think but ever the inquisitive type, you decide to check
-		it out. Searching the bedrooms and living room hasn't 
-		turned anything up but cobwebs and dust. The last place
-		left is the kitchen..."""))
+			an alternate dimension in this abandoned house at the 
+			end of the road in your neighborhood. Not sure what to 
+			think but ever the inquisitive type, you decide to check
+			it out. Searching the bedrooms and living room hasn't 
+			turned anything up but cobwebs and dust. The last place
+			left is the kitchen..."""))
 
 		action = input("Do you head to the kitchen?> ")
 
@@ -69,7 +69,7 @@ class Kitchen(Scene):
 
 		CodeFound = False
 
-		action = input("> ")
+		action = input("Care to look around?> ")
 	
 
 		if action == "fridge": 
@@ -79,7 +79,7 @@ class Kitchen(Scene):
 			grocery lists, passive-aggressive reminders, phone 
 			numbers....and a note that simply says 'Coke 2821'."""))
 			CodeFound = True 
-			return 'HouseKitchen'
+			return 'Kitchen'
 
 		elif action == "book": 
 
@@ -92,24 +92,24 @@ class Kitchen(Scene):
 			all journals to activate
 
 			it is """))
-			return 'HouseKitchen'
+			return 'Kitchen'
 
 		elif action == "sink":
 
 			print(dedent("""Nothing to see here. Just an old sink."""))
-			return 'HouseKitchen'
+			return 'Kitchen'
 
 		elif action == "range": 
 
 			print(dedent("""Old stovetop. Used recently and still in 
 			good shape."""))
-			return 'HouseKitchen'
+			return 'Kitchen'
 
 		elif action == "door":
 
 			print(dedent("""Looks like this door leads down into
 			the basement. Time to see what's down there!"""))
-			return 'HouseBasement'
+			return 'Basement'
 
 		else: 
 
@@ -144,19 +144,19 @@ class Basement(Scene):
 			bold red ink: 
 
 			Wednesday my dudes"""))
-			return 'HouseBasement'
+			return 'Basement'
 
 		elif action == "television": 
 
 			print(dedent("""You try pressing the power button for the
 			television, but nothing comes on."""))
-			return	'HouseBasement'
+			return	'Basement'
 
 		else: 
 
 			print(dedent("""Not quite sure what that means. 
 			Try something else."""))
-			return 'HouseBasement'
+			return 'Basement'
 
 	
 
