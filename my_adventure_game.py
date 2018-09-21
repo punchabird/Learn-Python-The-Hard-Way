@@ -1,4 +1,5 @@
 from textwrap import dedent
+from math import randint
 from sys import exit
 import os 
 os.system("my_adventure_game_pt2.py")
@@ -16,15 +17,33 @@ class Engine(object):
 		while current_scene != last_scene: 
 			next_scene_name = current_scene.enter()
 			current_scene = self.scene_map.next_scene(next_scene_name)
-
+		#something about being sure to print out the last scene
 		current_scene.enter() 
 
+
+class Scene(object): 
+
+	def enter(self): 
+		print("This scene is not yet configured.")
+		print("Subclass it and implement enter().")
+		exit(1)
+
+
+class Death(Scene): 
+
+	print("You died!")
+	exit(1)
 
 class Map(object): 
 
 	scenes = {
-
-
+		'GameStart': GameStart(),
+		'Kitchen': Kitchen(),
+		'Basement': Basement(),
+		'SecurityDoor': SecurityDoor(),
+		'PortalRoom': PortalRoom(),
+		'PortalEnd': PortalEnd(),
+		'Death': Death()
 	}
 
 	def __init__(self, start_scene):
@@ -38,7 +57,25 @@ class Map(object):
 		return self.next_scene(self.start_scene)
 
 
-class 	
+class GameStart(scene): 
+
+	print(dedent("""Someone told you that there's a portal to 
+		an alternate dimension in this abandoned house at the 
+		end of the road in your neighborhood. Not sure what to 
+		think but ever the inquisitive type, you decide to check
+		it out. Searching the bedrooms and living room hasn't 
+		turned anything up but cobwebs and dust. The last place
+		left is the kitchen..."""))
+
+	KitchenChoice = "Do you head to the kitchen?> "
+
+	if KitchenChoice == "yes": 
+		return 'Kitchen'
+	else: 
+		print("You walk out the front door and head home.")
+		exit(1)
+
+
 
 class Kitchen(Scene): 
 
@@ -179,7 +216,10 @@ class PortalRoom(Scene):
 
 class PortalEnd(Scene): 
 
-	
+	print(dedent("""As the green vortex expands, you feel an 
+		unseen force tugging you towards its center. Lifted 
+		off your feet, you are sucked through the portal..."""))
+	return 'Death'
 
 class SecurityDoor(Scene): 
 
@@ -202,17 +242,17 @@ class SecurityDoor(Scene):
 
 		return 'PortalRoom'
 
-	elif code !== "2821": 
-
-		print(dedent(f"""You press {code} on the vending machine, 
-			but nothing seems to have happened. Maybe try another?""")
-
 	else: 
 
-		print(dedent("""Not quite sure what you meant there.
-		Try something else!"""))
+		print(dedent("""You press some numbers on the vending machine, 
+			but nothing seems to have happened. Maybe try another?""")) 
+		return 'SecurityDoor'
+		
+	
 
-
+a_map = Map('GameStart')
+a_game = Engine(a_map)
+a_game.play() 
 
 
 
