@@ -16,7 +16,6 @@ class Engine(object):
 		#something about being sure to print out the last scene
 		current_scene.enter()
 
-
 class Scene(object): 
 
 	def enter(self): 
@@ -62,9 +61,7 @@ class Kitchen(Scene):
 	table, on top of which sits the remnants of an evening
 	meal, and a small black book. Looks like there's also a door 
 	that leads downstairs, just to the right.
-	"""))
-
-		CodeFound = False 
+	""")) 
 
 		action = input("Care to look around?> ")
 
@@ -76,8 +73,6 @@ class Kitchen(Scene):
 			grocery lists, passive-aggressive reminders, phone 
 			numbers....and a note that simply says 'Coke 2821'.
 			"""))
-
-			CodeFound = True 
 
 			return 'Kitchen'
 
@@ -179,7 +174,8 @@ class Basement(Scene):
 class PortalRoom(Scene): 
 
 	def enter(self): 
-
+		global FailedAttempts
+		FailedAttempts = 0	
 		print(dedent("""
 			The vending machine turned secret door
 			swung wide to reveal a hidden passageway. At the
@@ -195,37 +191,40 @@ class PortalRoom(Scene):
 			ENTER PASSPHRASE IN TERMINAL
 			"""))
 
-		action = input("> ")
-		FailedAttempts = 0 
+		SelfDestruct = False
 
-		if action == "It is Wednesday my dude":
+		while True: 
 
-			print(dedent("""
+			action = input("> ")
+			if action == "It is Wednesday my dude":
+
+				print(dedent("""
 				Holy shit! it looks like that was 
 				the correct action. The portal lights up and
 				starts humming loudly. A bright green vortex
 				begins spinning in the center of the ring...
 				"""))
-			return 'PortalEnd'
+				return 'PortalEnd'
 
-		elif FailedAttempts > 3: 
+			elif action != "It is Wednedsay my dude" and not SelfDestruct:
+				print(dedent("""
+				That doesn't appear to be the right passphrase.
+				According to the terminal, you have one more
+				attempt remaining..."""))
+				SelfDestruct = True
 
-			print(dedent("""
-				Looks like you might have tried
-				the code too many times. The console makes a))
-				loud beeping noise, then you're engulfed in a
-				flash of light and hear a bang...
+			elif action != "It is Wednesday my dude" and SelfDestruct: 
+				print(dedent("""
+				Looks like you might have tried the code too
+				many times. The console makes a loud beeping
+				noise, then you're engulfed in a flash of light
+				and hear a bang...
 				"""))
-			return 'Death'
+				return 'Death'
+			
 
-		else: 
 
-			print(dedent("""
-				That doesn't appear to be the right
-				action. Maybe try another?
-				"""))
-			FailedAttempts += 1
-			return 'PortalRoom'
+
 
 class PortalEnd(Scene): 
 
