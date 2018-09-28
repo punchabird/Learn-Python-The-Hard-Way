@@ -27,23 +27,26 @@ class Death(Scene):
 
 	def enter(self): 
 		print("You died!")
-	exit(1)
+		exit(1)
 
 class GameStart(Scene): 
 
 	def enter(self): 
-		print(dedent("""Someone told you that there's a portal to 
+		print(dedent("""
+			Someone told you that there's a portal to 
 			an alternate dimension in this abandoned house at the 
 			end of the road in your neighborhood. Not sure what to 
 			think but ever the inquisitive type, you decide to check
 			it out. Searching the bedrooms and living room hasn't 
 			turned anything up but cobwebs and dust. The last place
-			left is the kitchen..."""))
+			left is the kitchen...
+			"""))
 
 		action = input("DO you head to the kitchen?> ")
 
 		if action == "yes": 
 			return 'Kitchen'
+
 		else: 
 			print("You walk out the front door and head home.")
 			exit(1)
@@ -51,13 +54,15 @@ class GameStart(Scene):
 class Kitchen(Scene): 
 
 	def enter(self): 
-		print(dedent("""It's a pretty small kitchen you've stumbled
+		print(dedent("""
+	It's a pretty small kitchen you've stumbled
 	into. Next to a short countertop with a sink and faucet is 
 	an old electric range with oven, as well as a small fridge
 	with a few notes stuck on. Off to the left is the dining
 	table, on top of which sits the remnants of an evening
 	meal, and a small black book. Looks like there's also a door 
-	that leads downstairs, just to the right."""))
+	that leads downstairs, just to the right.
+	"""))
 
 		CodeFound = False 
 
@@ -65,10 +70,12 @@ class Kitchen(Scene):
 
 		if action == "fridge": 
 
-			print(dedent("""You sift through the notes on the fridge.
+			print(dedent("""
+			You sift through the notes on the fridge.
 			It looks like there isn't anything of significance - 
 			grocery lists, passive-aggressive reminders, phone 
-			numbers....and a note that simply says 'Coke 2821'."""))
+			numbers....and a note that simply says 'Coke 2821'.
+			"""))
 
 			CodeFound = True 
 
@@ -76,7 +83,8 @@ class Kitchen(Scene):
 
 		elif action == "book": 
 
-			print(dedent("""You flip open the black book on the table.
+			print(dedent("""
+			You flip open the black book on the table.
 			It appears to be a journal of some sort. Written in black
 			ink on cream-colored paper, someone has written the words: 
 
@@ -84,75 +92,96 @@ class Kitchen(Scene):
 
 			all journals to activate
 
-			it is """))
+			it is 
+			"""))
 			return 'Kitchen'
 
 		elif action == "sink":
 
-			print(dedent("""Nothing to see here. Just an old sink."""))
+			print(dedent("""
+				Nothing to see here. Just an old sink.
+				"""))
 			return 'Kitchen'
 
 		elif action == "range":
 
-			print(dedent("""Old stovetop. Used recently and still
-				in good shape."""))
+			print(dedent("""
+				Old stovetop. Used recently and still
+				in good shape.
+				"""))
 			return 'Kitchen'
 
 		elif action == "door":
 
-			print(dedent("""Looks like this door leads down into 
-				the basement. Time to see what's down there!"""))
+			print(dedent("""
+				Looks like this door leads down into 
+				the basement. Time to see what's down 
+				there!
+				"""))
 			return 'Basement'
 
 		else: 
 
-			print(dedent("""Not quite sure what that means."""))
+			print(dedent("""
+				Not quite sure what that means.
+				"""))
 			return 'Kitchen'
 
 class Basement(Scene): 
 
 	def enter(self): 
-		print(dedent("""The basement downstairs is surprisingly
-			bare. A ratty green sofa occupies the center of the
+		print(dedent("""
+			The basement downstairs is surprisingly
+			bare. A ratty green couch occupies the center of the
 			room facing directly opposite a television. Off to 
-			the left is a vending machine."""))
+			the left is a vending machine.
+			"""))
 
 		action = input("Where do you look?> ")
 
 		if action == "vending machine": 
 
-			print(dedent("""You decide to check out the vending 
-				machine."""))
+			print(dedent("""
+				You decide to check out the vending 
+				machine.
+				"""))
 			return 'SecurityDoor'
 
 		elif action == "couch": 
 
-			print(dedent("""Nothing to see except an old green
+			print(dedent("""
+				Nothing to see except an old green
 				couch - but wait! Jammed in between the cushions
 				you see another black book. Flipping past the 
 				first few pages, you find more scribbles. Among
 				them is a single phrase circled in bold red ink:
 
-				Wednesday my dudes"""))
+				Wednesday my dudes
+				"""))
 			return 'Basement'
 
 		elif action == "television": 
 
-			print(dedent("""You try pressing the power button
-				for the television, but nothing comes on."""))
+			print(dedent("""
+				You try pressing the power button
+				for the television, but nothing comes on.
+				"""))
 			return	'Basement'
 
 		else: 
 
-			print(dedent("""Not quite sure what that means.
-				Try something else."""))
+			print(dedent("""
+				Not quite sure what that means.
+				Try something else.
+				"""))
 			return 'Basement'
 
 class PortalRoom(Scene): 
 
 	def enter(self): 
 
-		print(dedent("""The vending machine turned secret door
+		print(dedent("""
+			The vending machine turned secret door
 			swung wide to reveal a hidden passageway. At the
 			end of the tunnel is a room with a large ring in 
 			the center, large enough to fit a house through.))
@@ -163,42 +192,51 @@ class PortalRoom(Scene):
 
 			UNIVERSE PORTAL ACTIVATION PROTOCOL 
 
-			ENTER PASSPHRASE IN TERMINAL"""))
+			ENTER PASSPHRASE IN TERMINAL
+			"""))
 
 		action = input("> ")
 		FailedAttempts = 0 
 
 		if action == "It is Wednesday my dude":
 
-			print(dedent("""Holy shit! it looks like that was 
+			print(dedent("""
+				Holy shit! it looks like that was 
 				the correct action. The portal lights up and
 				starts humming loudly. A bright green vortex
-				begins spinning in the center of the ring..."""))
+				begins spinning in the center of the ring...
+				"""))
 			return 'PortalEnd'
 
 		elif FailedAttempts > 3: 
 
-			print(dedent("""Looks like you might have tried
+			print(dedent("""
+				Looks like you might have tried
 				the code too many times. The console makes a))
 				loud beeping noise, then you're engulfed in a
-				flash of light and hear a bang..."""))
+				flash of light and hear a bang...
+				"""))
 			return 'Death'
 
 		else: 
 
-			print(dedent("""That doesn't appear to be the right
-				action. Maybe try another?"""))
+			print(dedent("""
+				That doesn't appear to be the right
+				action. Maybe try another?
+				"""))
 			FailedAttempts += 1
-			return 'PortlaRoom'
+			return 'PortalRoom'
 
 class PortalEnd(Scene): 
 
 	def enter(self): 
 
-		print(dedent("""As the green vortex expands, you feel
+		print(dedent("""
+			As the green vortex expands, you feel
 			an unseen force tugging you towards its center.
 			Lifted off your feet, you are sucked through the
-			portal...."""))
+			portal....
+			"""))
 		return 'Death'
 
 
@@ -206,30 +244,36 @@ class SecurityDoor(Scene):
 
 	def enter(self): 
 
-		print(dedent("""You find yourself standing in front
+		print(dedent("""
+			You find yourself standing in front
 			of what appears to be a vending machine. 
 			Something isn't quite right about how it sits on
 			the floor, though. The way it's placed feels like
 			it swings on a hinge - almost like a door? Maybe
-			thumbing a code into the keypad could work."""))
+			thumbing a code into the keypad could work.
+			"""))
 
 		action = input("> ")
 
 		if action == "2821": 
 
-			print(dedent("""You type in the code '2821', and
+			print(dedent("""
+				You type in the code '2821', and
 				cross your fingers. The vending machine lets
 				out a loud hissing noise, then slowly swings
 				open to reveal a hidden passageway. It's a
 				door! Now that a path is open, you run through
-				to see what's inside."""))
+				to see what's inside.
+				"""))
 			return 'PortalRoom'
 
 		else: 
 
-			print(dedent("""You press some numbers on the
+			print(dedent("""
+				You press some numbers on the
 				vending machine, but nothing seems to have
-				happened. Maybe try another?"""))
+				happened. Maybe try another?
+				"""))
 			return 'SecurityDoor'
 
 
