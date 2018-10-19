@@ -85,4 +85,15 @@ class PrisonExit(Scene):
 	def __init__(self, arg):
 		super(PrisonExit, self).__init__()
 		self.arg = arg
+
+class Map(object):
+	"""A map containing all the scenes"""
+	def __init__(self, arg):
+		super(Map, self).__init__()
+		self.arg = arg
+
+a_map = Map('PrisonCell')		
+a_game = Engine(a_map)
+a_game.play()
+						
 		
